@@ -5,6 +5,16 @@ The ATM get his bills data from the DB (MS SQL Server), and get the accounts pro
 The account microservice manages all the accounts and their balances. this microservice is standalone.
 The account microservice is injected to the transactions microservice via dependency Injection and depends on him.
 
+Routes:
+in the account microservice you have these:
+- GET api/account/{id} - return the balance of an account 
+- POST api/account - allow to make new account, return his id
+- PUT api/account/{id} - allow to update the balance of an account
+
+int the transaction microservice you have these:
+- PUT api/transaction/deposit/{id} - make a deposit to the ATM, updating the account balance
+- PUT api/transaction/withdraw/{id} - make a withdraw from the ATM, updating the account balnce
+
 
 to run this project locally, you need:
 - .NET version 6
