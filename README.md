@@ -11,14 +11,17 @@ to run this project locally, you need:
 
 Then, after downloading the project, to initialize the databases for the project
 run these lines in the Package Manager Console or in the terminal:
-`
-cd ./AccountDataAccessLayer
-dotnet ef database update -s ../AccountApi
-cd ../TransactionDataAccessLayer
-dotnet ef database update -s ../TransactionApi
-`
+
+`cd ./AccountDataAccessLayer`
+
+`dotnet ef database update -s ../AccountApi`
+
+`cd ../TransactionDataAccessLayer`
+
+`dotnet ef database update -s ../TransactionApi`
+
 Then
-- if you are running in Visual Studio 2022, right click on the solution, 'configure startup project' and then choose AccountApi and TransactionApi
+- if you are running in Visual Studio 2022, right click on the solution, 'configure startup project' and then choose AccountApi and TransactionApi,
 Then run the code.
 - else, you can run these 2 projects in 2 seperated terminals, run `dotnet run`
 
