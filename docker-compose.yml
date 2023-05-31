@@ -1,8 +1,5 @@
 version: '3.4'
 
-networks:
-  first:
-
 services:
   accountapi:
     container_name: account
@@ -18,18 +15,14 @@ services:
       - MSSQL_DB_SA_PASSWORD=S3cur3P@ssW0rd!
     depends_on:
       - db
-    networks:
-      - first
   db:
     container_name: db
-    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
     ports:
       - "1433:1433"
     environment:
       - MSSQL_SA_PASSWORD=S3cur3P@ssW0rd!
       - ACCEPT_EULA=Y
-    networks:
-      - first
 
 
 
