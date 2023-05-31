@@ -17,7 +17,7 @@ namespace TransactionApi.Services
         /// <param name="clientFacroty">client factory, will be injected via Dependency Injection.</param>
         public AccountClientService(IHttpClientFactory clientFacroty)
         {
-            httpClient = clientFacroty.CreateClient();
+            httpClient = clientFacroty.CreateClient("client");
         }
 
 
@@ -32,18 +32,19 @@ namespace TransactionApi.Services
         {
             return await Task.Run(async () =>
             {
-
-                var response = await httpClient.PutAsync($"http://localhost:5195/api/account/{accountId}", JsonContent.Create(amount));
+                Console.WriteLine(httpClient.BaseAddress);
+                var response = await httpClient.PutAsync(@$"{accountId}", JsonContent.Create(amount));
                 if (response.IsSuccessStatusCode)
                 {
                     // parse the response
                     var contentAsString = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(contentAsString);
                     var contentAsObject = JsonSerializer.Deserialize<HasResult>(contentAsString);
 
                     // return the new balance or an exception.
                     return contentAsObject is null
                     ? throw new Exception(response.ReasonPhrase)
-                    : contentAsObject.Result;
+                    : contentAsObject.result;
                 }
                 throw new Exception(response.ReasonPhrase);
             });
@@ -53,7 +54,7 @@ namespace TransactionApi.Services
         // helper class for the API response
         class HasResult
         {
-            public int Result { get; set; }
+            public int result { get; set; }
         }
     }
 }

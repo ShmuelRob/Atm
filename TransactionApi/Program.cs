@@ -10,9 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TransactionsDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
+//builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("client", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5195/");
+client.BaseAddress = new Uri(@"http://localhost:5195/api/account/");
 });
 builder.Services.AddSingleton<IAccountClientService, AccountClientService>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();

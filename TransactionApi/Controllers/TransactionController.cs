@@ -39,8 +39,6 @@ namespace TransactionApi.Controllers
             int balanceAfterAction = await transactionRepository.Deposit(id, bills);
             return Ok(balanceAfterAction);
         }
-
-
         /// <summary>
         /// In this route you can make a withdraw.
         /// </summary>
