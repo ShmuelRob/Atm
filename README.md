@@ -25,3 +25,4 @@ Then
 Then run the code.
 - else, you can run these 2 projects in 2 seperated terminals, run `dotnet run`
 
+NOTE: do NOT use docker-compose yet do start the app, bacuse it wasn't get all the configurations needed.
