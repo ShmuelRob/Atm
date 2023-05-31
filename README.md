@@ -2,8 +2,9 @@
 
 This project represents an ATM. It has an options to make deposits and withdraws.
 The ATM get his bills data from the DB (MS SQL Server), and get the accounts properties from the account microservice.
-The account microservice is built in the project, and manages all the accounts and their balances.
-The account microservice is injected to the transactions microservice via dependency Injection.
+The account microservice manages all the accounts and their balances. this microservice is standalone.
+The account microservice is injected to the transactions microservice via dependency Injection and depends on him.
+
 
 to run this project locally, you need:
 - .NET version 6
