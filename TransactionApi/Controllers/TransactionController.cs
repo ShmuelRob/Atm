@@ -31,11 +31,19 @@ namespace TransactionApi.Controllers
         [HttpPut("deposit/{id}")]
         public async Task<IActionResult> Deposit(int id, [FromBody] Bill[] bills)
         {
-            var isAnyAmointOfBillNegetive = bills.Any(b => b.Amount < 0);
-            if (isAnyAmointOfBillNegetive)
+            var isAnyAmountOfBillNegetive = bills.Any(b => b.Amount < 0);
+            if (isAnyAmountOfBillNegetive)
             {
-                return BadRequest("the bills must be positive integers in a deposit");
+                return BadRequest("the bills amoint must be positive integers in a deposit");
             }
+
+            var isAnyValueOfBillNegetive = bills.Any(b => b.Value < 0);
+            if (isAnyValueOfBillNegetive)
+            {
+                return BadRequest("the bills value must be positive integers in a deposit");
+            }
+
+
             int balanceAfterAction = await transactionRepository.Deposit(id, bills);
             return Ok(balanceAfterAction);
         }
@@ -48,6 +56,10 @@ namespace TransactionApi.Controllers
         [HttpPut("withdraw/{id}")]
         public async Task<IActionResult> Withdraw(int id, [FromBody] int amount)
         {
+            if (amount < 0)
+            {
+                amount = -amount;
+            }
             int balanceAfterAction = await transactionRepository.Withdraw(id, amount);
             return Ok(balanceAfterAction);
         }

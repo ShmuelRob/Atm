@@ -33,7 +33,7 @@ namespace TransactionApi.Services
             return await Task.Run(async () =>
             {
                 Console.WriteLine(httpClient.BaseAddress);
-                var response = await httpClient.PutAsync(@$"{accountId}", JsonContent.Create(amount));
+                var response = await httpClient.PutAsync($"{accountId}", JsonContent.Create(amount));
                 if (response.IsSuccessStatusCode)
                 {
                     // parse the response
