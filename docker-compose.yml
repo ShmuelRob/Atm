@@ -1,0 +1,62 @@
+version: '3.4'
+
+networks:
+  first:
+
+services:
+  accountapi:
+    container_name: account
+    image: ${DOCKER_REGISTRY-}accountapi
+    build:
+      context: .
+      dockerfile: AccountApi/Dockerfile
+    ports:
+      - 80:80
+    environment:
+      - DB_HOST=ATMDB
+      - DB_NAME=AccountDb
+      - MSSQL_DB_SA_PASSWORD=S3cur3P@ssW0rd!
+    depends_on:
+      - db
+    networks:
+      - first
+  db:
+    container_name: db
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    ports:
+      - "1433:1433"
+    environment:
+      - MSSQL_SA_PASSWORD=S3cur3P@ssW0rd!
+      - ACCEPT_EULA=Y
+    networks:
+      - first
+
+
+
+#      version: "3.4"
+
+#services:
+#    Account:
+#        build:
+#          dockerfile: ./AccountApi/Dockerfile
+#        ports:
+#          - "8080:8080"
+#        depends_on:
+#          - db
+#          - Transaction
+#    Transaction:
+#        build:
+#          dockerfile: ./TransactionApi/Dockerfile
+#        ports:
+#          - "8081:8081"
+#        depends_on:
+#          - db
+#    db:
+#        image: "mcr.microsoft.com/mssql/server:2022-latest"
+#        ports:
+#          - "1433:1433"
+
+#        environment:
+#            SA_PASSWORD: "S3cur3P@ssW0rd!"
+#            ACCEPT_EULA: "Y"
+

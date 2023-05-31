@@ -1,0 +1,26 @@
+version: "3.4"
+
+services:
+    Account:
+        build:
+          dockerfile: ./AccountApi/Dockerfile
+        ports:
+          - "8080:8080"
+        depends_on:
+          - db
+          - Transaction
+    Transaction:
+        build:
+          dockerfile: ./TransactionApi/Dockerfile
+        ports:
+          - "8081:8081"
+        depends_on:
+          - db
+    db:
+        image: "mcr.microsoft.com/mssql/server:2022-latest"
+        ports:
+          - "1433:1433"
+
+        environment:
+            SA_PASSWORD: "S3cur3P@ssW0rd!"
+            ACCEPT_EULA: "Y"
