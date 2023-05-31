@@ -7,7 +7,7 @@ namespace AccountApi.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountsController : ControllerBase
     {
         readonly IAccountRepository accountRepository;
 
@@ -16,7 +16,7 @@ namespace AccountApi.Controllers
         /// The constructor of the controller, implements Dependency Injection.
         /// </summary>
         /// <param name="accountRepository">The repository, will be ingected via DI</param>
-        public AccountController(IAccountRepository accountRepository)
+        public AccountsController(IAccountRepository accountRepository)
             => this.accountRepository = accountRepository;
 
 

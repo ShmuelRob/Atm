@@ -13,7 +13,7 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 //builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("client", client =>
 {
-client.BaseAddress = new Uri("http://localhost:5195/api/account/");
+client.BaseAddress = new Uri("http://localhost:5195/api/accounts/");
 });
 builder.Services.AddSingleton<IAccountClientService, AccountClientService>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();

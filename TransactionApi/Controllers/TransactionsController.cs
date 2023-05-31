@@ -9,7 +9,7 @@ namespace TransactionApi.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class TransactionController : ControllerBase
+    public class TransactionsController : ControllerBase
     {
         readonly ITransactionRepository transactionRepository;
 
@@ -18,7 +18,7 @@ namespace TransactionApi.Controllers
         /// The constructor of the controller, implements Dependency Injection.
         /// </summary>
         /// <param name="transactionRepository"></param>
-        public TransactionController(ITransactionRepository transactionRepository)
+        public TransactionsController(ITransactionRepository transactionRepository)
             => this.transactionRepository = transactionRepository;
 
 
