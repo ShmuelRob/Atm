@@ -7,13 +7,13 @@ The account microservice is injected to the transactions microservice via depend
 
 Routes:
 in the account microservice you have these:
-- GET api/account/{id} - return the balance of an account 
-- POST api/account - allow to make new account, return his id
-- PUT api/account/{id} - allow to update the balance of an account
+- GET api/accounts/{id} - return the balance of an account 
+- POST api/accounts - allow to make new account, return his id
+- PUT api/accounts/{id} - allow to update the balance of an account
 
 int the transaction microservice you have these:
-- PUT api/transaction/deposit/{id} - make a deposit to the ATM, updating the account balance
-- PUT api/transaction/withdraw/{id} - make a withdraw from the ATM, updating the account balnce
+- PUT api/transactions/deposit/{id} - make a deposit to the ATM, updating the account balance
+- PUT api/transactions/withdraw/{id} - make a withdraw from the ATM, updating the account balnce
 
 
 to run this project locally, you need:
